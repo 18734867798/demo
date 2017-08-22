@@ -1,9 +1,8 @@
-package com.example.service.impl;
+package com.example.service;
 
 import com.example.dao.CountryMapper;
 import com.example.po.Country;
 import com.example.po.CountryExample;
-import com.example.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
