@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.PermissionMapper">
+    <select id="findAll" resultType="com.example.po.Permission">
+        SELECT * from permission
+    </select>
+
+    <select id="findPermissonsByUserId" parameterType="java.lang.Integer" resultType="com.example.po.Permission">
+       SELECT
+	p.*
+FROM
+	`user` AS u
+LEFT JOIN user_role AS ur ON u.id = ur.userId
+LEFT JOIN role AS r ON ur.roleId = r.id
+LEFT JOIN role_permission AS rp ON r.id = rp.roleId
+LEFT JOIN permission AS p ON rp.permissionId=p.id
+ WHERE u.id=#{userId}
+    </select>
+</mapper>
