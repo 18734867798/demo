@@ -1,4 +1,4 @@
-package com.example.config.shiro;//package com.example.shiro;
+//package com.example.config.shiro;//package com.example.shiro;
 //
 //import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 //import org.apache.shiro.web.mgt.DefaultWebSecurityManager;

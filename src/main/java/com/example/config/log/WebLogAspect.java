@@ -13,7 +13,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Enumeration;
 
 /**
@@ -65,18 +68,39 @@ public class WebLogAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 
         HttpServletRequest request = attributes.getRequest();
+        HttpServletResponse response = attributes.getResponse();
+
 
         // 记录下请求内容
 
-        logger.info("URL : " + request.getRequestURL().toString());
+//        logger.info("URL : " + request.getRequestURL().toString());
+//
+//        logger.info("HTTP_METHOD : " + request.getMethod());
+//
+//        logger.info("IP : " + request.getRemoteAddr());
+//
+//        logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+//
+//        logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
+//
+//        logger.info("REQUEST_TIME:"+ new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()).toString());
 
-        logger.info("HTTP_METHOD : " + request.getMethod());
+
+        logger.info("请求URL : " + request.getRequestURL().toString());
+
+        logger.info("请求方式 : " + request.getMethod());
 
         logger.info("IP : " + request.getRemoteAddr());
 
-        logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+        logger.info("请求对应执行controller方法的全路径 : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
 
-        logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
+        logger.info("请求参数 : " + Arrays.toString(joinPoint.getArgs()));
+
+        logger.info("请求时间 : "+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()).toString());
+
+        logger.info("响应状态码 : "+ response.getStatus());
+
+        //logger.info("响应内容:"+response.);
 
         //获取所有参数方法一：
 
