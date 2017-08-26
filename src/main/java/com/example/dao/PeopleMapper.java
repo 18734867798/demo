@@ -2,10 +2,11 @@ package com.example.dao;
 
 import com.example.po.People;
 import com.example.po.PeopleExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-
+@Mapper
 public interface PeopleMapper {
     int countByExample(PeopleExample example);
 
