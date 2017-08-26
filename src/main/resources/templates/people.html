@@ -105,5 +105,12 @@
     function optionUserData(param){
         alert(param.getAttribute("id"));
     }
+    $(document).ready(function(){
+
+       $.get("people/findAll/1/3/38",function(data){
+           alert("Data Loaded: " + JSON.stringify(data));
+       });
+
+    });
 </script>
 </html>

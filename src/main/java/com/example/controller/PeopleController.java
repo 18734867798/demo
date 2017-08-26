@@ -44,13 +44,13 @@ public class PeopleController {
     public People  findPepleById(@PathVariable(name="peopleId") String peopleId){
         return peopleMapper.selectByPrimaryKey(peopleId);
     }
-    @RequestMapping
-    public void  addPeople(){
-
-    }
-    @RequestMapping
-    public void  deletePeople(){
-
-    }
+//    @RequestMapping
+//    public void  addPeople(){
+//
+//    }
+//    @RequestMapping
+//    public void  deletePeople(){
+//
+//    }
 
 }
