@@ -32,7 +32,7 @@ public class IndexController {
 //        person.add(people1);
 //        person.add(people2);
 //        model.addAttribute("person",person);
-        return  "people";
+        return  "people/people";
     }
 
 

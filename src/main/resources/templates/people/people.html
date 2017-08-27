@@ -96,20 +96,68 @@
 <script th:src="@{bootstrap/js/bootstrap.min.js}"></script>
 </body>
 <script th:inline="javascript">
-    //存放所有用户
-    var users = users || {};
-    //操作类型
-    var operateType = "";
-    //存放搜索对象
-    var searchUsers = searchUsers || {};
-    function optionUserData(param){
-        alert(param.getAttribute("id"));
-    }
+    //页面加载
     $(document).ready(function(){
 
-       $.get("people/findAll/1/3/38",function(data){
-           alert("Data Loaded: " + JSON.stringify(data));
-       });
+       $.ajax(
+           {
+               type:"GET",
+               url:"people/findAll/1/3/38",
+               data:"aaa",
+               dataType:"",
+               cache: false,
+               ajaxStart:function(){
+                   //Global Event
+                 //This event is triggered if an Ajax request is started and no other Ajax requests are currently running.
+                   alert("ajaxStart");
+               },
+               beforeSend: function(){
+                   //Local Event
+                   //This event, which is triggered before an Ajax request is started, allows you to modify the XMLHttpRequest object(setting additional headers, if need be.)
+                   alert("beforeSend");
+               },
+               ajaxSend: function(){
+                   //Global Event
+                   //This global event is also triggered before the request is run.
+                   alert("ajaxSend");
+               },
+               success: function(){
+                    //Local Event
+                   // Handle the beforeSend event
+                   alert("success");
+               },
+               ajaxSuccess: function(){
+                     //Global Event
+                    //This event is also only called if the request was successful.
+                   alert("ajaxSuccess");
+               },
+               error : function(){
+                   // Local Event
+                   //This event is only called if an error occurred with the request (you can never have both an error and a success callback with a request).
+                   alert("error");
+               },
+               ajaxError : function(){
+                   //Global Event
+                   //This global event behaves the same as the local error event.
+                   alert("ajaxError");
+               },
+               complete : function(){
+                   //Local Event
+                  //This event is called regardless of if the request was successful, or not. You will always receive a complete callback, even for synchronous requests.
+                   alert("complete");
+               },
+               ajaxComplete : function(){
+                   //Global Event
+                   //This event behaves the same as the complete event and will be triggered every time an Ajax request finishes.
+                   alert("ajaxComplete");
+               },
+               ajaxStop  : function(){
+                    //Global Event
+                   //This global event is triggered if there are no more Ajax requests being processed.
+                   alert("ajaxStop");
+               }
+
+           });
 
     });
 </script>

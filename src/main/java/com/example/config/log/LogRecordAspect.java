@@ -42,10 +42,10 @@ public class LogRecordAspect {
         HttpServletRequest request = sra.getRequest();
         HttpServletResponse response = sra.getResponse();
 
-        String url = request.getRequestURL().toString();
-        String method = request.getMethod();
-        String uri = request.getRequestURI();
-        String queryString = request.getQueryString();
+//        String url = request.getRequestURL().toString();
+//        String method = request.getMethod();
+//        String uri = request.getRequestURI();
+//        String queryString = request.getQueryString();
 
         logger.info("..............................请求开始..............................");
 
@@ -59,16 +59,20 @@ public class LogRecordAspect {
 
         logger.info("请求方式 : " + request.getMethod());
 
-        logger.info("IP地址 : " + request.getRemoteAddr());
+        logger.info("请求IP地址 : " + request.getRemoteAddr());
 
         logger.info("请求对应执行controller方法的全路径 : " + pjp.getSignature().getDeclaringTypeName() + "." + pjp.getSignature().getName());
 
 
         // result的值就是被拦截方法的返回值
         Object result = pjp.proceed();
+        if(result instanceof String){
 
+            logger.info("controller跳转的view是 : " + "resources/static/"+result+".html");
+        }else {
 
-        logger.info("controller的返回值是 " + new Gson().toJson(result));
+            logger.info("controller的返回json值是 : " + new Gson().toJson(result));
+        }
         logger.info("响应状态码 : "+ response.getStatus());
         logger.info("..............................请求结束..............................");
         return result;
