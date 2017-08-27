@@ -58,20 +58,20 @@
         </tr>
         </thead>
         <tbody id="tbody">
-        <tr class="error">
-            <th>1</th>
-            <th>三胖</th>
-            <th>男</th>
-            <th>38</th>
-            <th>朝鲜</th>
-        </tr>
-        <tr class="warning">
-            <th>1</th>
-            <th>三胖</th>
-            <th>男</th>
-            <th>38</th>
-            <th>朝鲜</th>
-        </tr>
+        <!--<tr class="error">-->
+            <!--<th>1</th>-->
+            <!--<th>三胖</th>-->
+            <!--<th>男</th>-->
+            <!--<th>38</th>-->
+            <!--<th>朝鲜</th>-->
+        <!--</tr>-->
+        <!--<tr class="warning">-->
+            <!--<th>1</th>-->
+            <!--<th>三胖</th>-->
+            <!--<th>男</th>-->
+            <!--<th>38</th>-->
+            <!--<th>朝鲜</th>-->
+        <!--</tr>-->
         </tbody>
 
     </table>
@@ -98,13 +98,13 @@
 <script th:inline="javascript">
     //页面加载
     $(document).ready(function(){
-
        $.ajax(
            {
                type:"GET",
                url:"people/findAll/1/3/38",
+
                data:"aaa",
-               dataType:"",
+               dataType:"json",//预期服务器返回的数据类型
                cache: false,
                ajaxStart:function(){
                    //Global Event
@@ -121,10 +121,19 @@
                    //This global event is also triggered before the request is run.
                    alert("ajaxSend");
                },
-               success: function(){
+               success: function(msg){
                     //Local Event
                    // Handle the beforeSend event
                    alert("success");
+                   $("#tbody").html(
+                       "<tr >"+
+                   "<th>"+"1"+"</th>"+
+                   "<th>"+"三胖"+"</th>"+
+                   "<th>"+"男"+"</th>"+
+                   "<th>"+"38"+"</th>"+
+                   "<th>"+"男"+"</th>"+
+                   "</tr>"
+                   );
                },
                ajaxSuccess: function(){
                      //Global Event
