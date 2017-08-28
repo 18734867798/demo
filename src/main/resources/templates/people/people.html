@@ -98,6 +98,7 @@
 <script th:inline="javascript">
     //页面加载
     $(document).ready(function(){
+
        $.ajax(
            {
                type:"GET",
@@ -125,15 +126,22 @@
                     //Local Event
                    // Handle the beforeSend event
                    alert("success");
-                   $("#tbody").html(
-                       "<tr >"+
-                   "<th>"+"1"+"</th>"+
-                   "<th>"+"三胖"+"</th>"+
-                   "<th>"+"男"+"</th>"+
-                   "<th>"+"38"+"</th>"+
-                   "<th>"+"男"+"</th>"+
-                   "</tr>"
-                   );
+                  // alert(msg);
+                   //1获取数组对象
+                   var listObj=msg.list;
+                   //2设置拼装数据
+                   var appendRow='';
+                   for(var i in listObj){
+                       appendRow +=  "<tr>"+
+                           "<th>"+i+"</th>"+
+                           "<th>"+listObj[i].name+"</th>"+
+                           "<th>"+listObj[i].sex+"</th>"+
+                           "<th>"+listObj[i].age+"</th>"+
+                           "<th>"+listObj[i].countryid+"</th>"+
+                           "</tr>"
+                   }
+                   $("#tbody").html(appendRow);
+
                },
                ajaxSuccess: function(){
                      //Global Event
