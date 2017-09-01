@@ -27,7 +27,7 @@ public class PeopleController {
     private PeopleMapper peopleMapper;
 
     @RequestMapping(value ="/findAll/{pageNum}/{pageSize}", method = RequestMethod.GET)
-    public PageInfo findAll(@PathVariable(name = "pageNum")  String  pageNum, @PathVariable(name = "pageSize") String  pageSize){
+    public PageInfo findAll(@PathVariable(name = "pageNum")  String  pageNum, @PathVariable(name = "pageSize" ) String  pageSize){
 
         //前台默认传来的是字符串，需要转换
         pageNum = pageNum == null ? "1" : pageNum;

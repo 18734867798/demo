@@ -16,7 +16,7 @@ public class PeopePo {
 
     private String sex;
 
-    private List<Country> countryList;
+    private Country country;
 
     public String getId() {
         return id;
@@ -50,11 +50,11 @@ public class PeopePo {
         this.sex = sex;
     }
 
-    public List<Country> getCountryList() {
-        return countryList;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryList(List<Country> countryList) {
-        this.countryList = countryList;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }
